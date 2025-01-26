@@ -1,0 +1,23 @@
+# Logs
+*.log
+npm-debug.log*
+
+# Dependency directories
+node_modules/
+
+# Build directories
+build/
+dist/
+
+# Environment files
+.env
+
+# Editor settings
+.vscode/
+*.swp
+
+# macOS files
+.DS_Store
+
+# Optional npm cache directory
+.npm/
