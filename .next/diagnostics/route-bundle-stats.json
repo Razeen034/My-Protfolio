@@ -1,0 +1,59 @@
+[
+  {
+    "route": "/",
+    "firstLoadUncompressedJsBytes": 644470,
+    "firstLoadChunkPaths": [
+      ".next/static/chunks/0qu.f61zx5_0g.js",
+      ".next/static/chunks/0d3shmwh5_nmn.js",
+      ".next/static/chunks/13o_1a6-9b4gz.js",
+      ".next/static/chunks/06t.-q41hjvuc.js",
+      ".next/static/chunks/0gscbv2oo_ix7.js",
+      ".next/static/chunks/0pqt~8bl3ukh4.js",
+      ".next/static/chunks/16g.ca89g7fib.js",
+      ".next/static/chunks/0e-wrhqh4h3r5.js",
+      ".next/static/chunks/turbopack-0n2m3s1bo.vb..js"
+    ]
+  },
+  {
+    "route": "/_not-found",
+    "firstLoadUncompressedJsBytes": 641890,
+    "firstLoadChunkPaths": [
+      ".next/static/chunks/0qu.f61zx5_0g.js",
+      ".next/static/chunks/0d3shmwh5_nmn.js",
+      ".next/static/chunks/13o_1a6-9b4gz.js",
+      ".next/static/chunks/0gscbv2oo_ix7.js",
+      ".next/static/chunks/0pqt~8bl3ukh4.js",
+      ".next/static/chunks/16g.ca89g7fib.js",
+      ".next/static/chunks/0e-wrhqh4h3r5.js",
+      ".next/static/chunks/turbopack-0n2m3s1bo.vb..js"
+    ]
+  },
+  {
+    "route": "/about",
+    "firstLoadUncompressedJsBytes": 641890,
+    "firstLoadChunkPaths": [
+      ".next/static/chunks/0qu.f61zx5_0g.js",
+      ".next/static/chunks/0d3shmwh5_nmn.js",
+      ".next/static/chunks/13o_1a6-9b4gz.js",
+      ".next/static/chunks/0gscbv2oo_ix7.js",
+      ".next/static/chunks/0pqt~8bl3ukh4.js",
+      ".next/static/chunks/16g.ca89g7fib.js",
+      ".next/static/chunks/0e-wrhqh4h3r5.js",
+      ".next/static/chunks/turbopack-0n2m3s1bo.vb..js"
+    ]
+  },
+  {
+    "route": "/projects",
+    "firstLoadUncompressedJsBytes": 641890,
+    "firstLoadChunkPaths": [
+      ".next/static/chunks/0qu.f61zx5_0g.js",
+      ".next/static/chunks/0d3shmwh5_nmn.js",
+      ".next/static/chunks/13o_1a6-9b4gz.js",
+      ".next/static/chunks/0gscbv2oo_ix7.js",
+      ".next/static/chunks/0pqt~8bl3ukh4.js",
+      ".next/static/chunks/16g.ca89g7fib.js",
+      ".next/static/chunks/0e-wrhqh4h3r5.js",
+      ".next/static/chunks/turbopack-0n2m3s1bo.vb..js"
+    ]
+  }
+]

@@ -1,6 +1,5 @@
-import ProjectCard from "@/components/projectCard";
 import { Reveal } from "@/components/reveal";
-import Terminal from "@/components/terminal"; // 1. Import your new functional component
+import Terminal from "@/components/terminal";
 
 export default function Home() {
   return (
@@ -45,29 +44,6 @@ export default function Home() {
             <Terminal />
           </div>
         </Reveal>
-      </section>
-
-      {/* Projects Section */}
-      <section className="mt-32">
-        <div className="flex items-end justify-between mb-12">
-          <div>
-            <h2 className="text-3xl font-bold text-white">Selected Work</h2>
-            <p className="text-slate-400 mt-2">A collection of technical deep-dives.</p>
-          </div>
-        </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <ProjectCard 
-            title="Local Voice Agent" 
-            description="Real-time voice processing using Whisper and Ollama. Zero-latency inference on Apple Silicon." 
-            tags={["Python", "MPS", "Metal"]}
-          />
-          <ProjectCard 
-            title="Next.js Portfolio" 
-            description="Ultra-fast personal site with custom component architecture and Framer Motion." 
-            tags={["TypeScript", "Tailwind"]}
-          />
-        </div>
       </section>
     </main>
   );

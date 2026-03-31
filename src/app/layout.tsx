@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 // 1. Import your new Navbar
 import Navbar from "@/components/navbar";
+import Footer from "@/components/footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,8 +35,11 @@ export default function RootLayout({
         <Navbar />
         
         {/* 3. Add padding-top so content doesn't hide under the fixed Navbar */}
-        <main className="pt-16">
-          {children}
+        <main className="pt-16 min-h-screen flex flex-col">
+          <div className="flex-1">
+            {children}
+          </div>
+          <Footer />
         </main>
       </body>
     </html>
