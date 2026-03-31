@@ -29,8 +29,12 @@ export default function Navbar() {
             About
           </Link>
 
-          {/* Keep Projects as a placeholder for now */}
-          <button className="opacity-40 cursor-not-allowed">Projects</button>
+          <Link
+            href="/projects"
+            className={`transition-colors ${pathname === '/projects' ? 'text-blue-400' : 'hover:text-white'}`}
+          >
+            Projects
+          </Link>
         </div>
       </div>
     </nav>

@@ -3,7 +3,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { useRouter } from "next/navigation";
 
 const COMMANDS: Record<string, string> = {
-  help: "Commands: help, clear, about, goto [page]",
+  help: "Commands: help, clear, about, goto [page] (home, about, projects, contact, github)",
   about: "I'm a developer building AI agents on M3. Type 'goto about' to see the full page.",
 };
 
@@ -40,6 +40,23 @@ export default function Terminal() {
           newHistory.push("Redirecting to /about...");
           setHistory(newHistory);
           setTimeout(() => router.push("/about"), 500);
+          return;
+        } else if (destination === "projects") {
+          newHistory.push("Redirecting to /projects...");
+          setHistory(newHistory);
+          setTimeout(() => router.push("/projects"), 500);
+          return;
+        } else if (destination === "home") {
+          newHistory.push("Redirecting to /...");
+          setHistory(newHistory);
+          setTimeout(() => router.push("/"), 500);
+          return;
+        } else if (destination === "contact") {
+          newHistory.push("Email me at: contact@example.com");
+        } else if (destination === "github") {
+          newHistory.push("Opening GitHub in a new tab...");
+          setHistory(newHistory);
+          setTimeout(() => window.open("https://github.com", "_blank"), 500);
           return;
         } else {
           newHistory.push(`Error: Page '${destination}' not found.`);
