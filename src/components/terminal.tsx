@@ -12,19 +12,12 @@ export default function Terminal() {
   const [input, setInput] = useState("");
   const [history, setHistory] = useState<string[]>(["M3 Console v1.0.0. Type 'help' to start."]);
   
-  // 1. Create a Ref for the input element
   const inputRef = useRef<HTMLInputElement>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
 
-  // 2. Function to force focus whenever the terminal is clicked
-  const focusInput = () => {
-    inputRef.current?.focus();
-  };
-
   useEffect(() => {
     if (scrollRef.current) scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
-    // Auto-focus on mount
-    focusInput();
+    inputRef.current?.focus();
   }, [history]);
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
@@ -75,10 +68,10 @@ export default function Terminal() {
   };
 
   return (
-    <div 
-      // 3. Add onClick here so the whole box is "clickable"
-      onClick={focusInput}
-      className="bg-slate-900 border border-slate-800 rounded-lg overflow-hidden shadow-2xl h-[350px] flex flex-col font-mono text-sm cursor-text"
+    <div
+      role="region"
+      aria-label="Command Terminal"
+      className="bg-slate-900 border border-slate-800 rounded-lg overflow-hidden shadow-2xl h-[350px] flex flex-col font-mono text-sm shadow-inner-custom"
     >
       <div className="bg-slate-800 px-4 py-2 flex gap-1.5 items-center">
         <div className="w-3 h-3 rounded-full bg-red-500/50" />
@@ -87,16 +80,22 @@ export default function Terminal() {
         <span className="text-slate-500 text-[10px] ml-2 uppercase tracking-widest">m3-local-terminal</span>
       </div>
 
-      <div ref={scrollRef} className="p-4 flex-1 overflow-y-auto space-y-1 scrollbar-hide">
+      <div 
+        ref={scrollRef} 
+        className="p-4 flex-1 overflow-y-auto space-y-1 scrollbar-hide"
+        role="log"
+        aria-live="polite"
+        onClick={() => inputRef.current?.focus()}
+      >
         {history.map((line, i) => (
           <p key={i} className={line.startsWith(">") ? "text-blue-400" : "text-slate-300"}>
             {line}
           </p>
         ))}
         <div className="flex gap-2 items-center">
-          <span className="text-green-400">➜</span>
+          <label htmlFor="terminal-input" className="text-green-400">➜</label>
           <input
-            // 4. Attach the ref here
+            id="terminal-input"
             ref={inputRef}
             type="text"
             value={input}
@@ -106,6 +105,7 @@ export default function Terminal() {
             spellCheck={false}
             autoComplete="off"
           />
+          <span className="w-2 h-4 bg-green-400 animate-blink" />
         </div>
       </div>
     </div>

@@ -8,7 +8,7 @@ export default function AboutPage() {
 
       <Reveal>
         <div className="max-w-3xl mx-auto pt-10">
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-8 tracking-tight">
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-8 tracking-wider font-heading">
             Behind the Code
           </h1>
 
@@ -29,11 +29,11 @@ export default function AboutPage() {
 
           <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="p-6 rounded-2xl bg-slate-900/50 border border-slate-800">
-              <h3 className="text-white font-bold mb-2">Core Tech Stack</h3>
+              <h3 className="text-white font-bold mb-2 font-heading">Core Tech Stack</h3>
               <p className="text-slate-400 text-sm">Next.js 15, React, TypeScript, Tailwind CSS, Framer Motion.</p>
             </div>
             <div className="p-6 rounded-2xl bg-slate-900/50 border border-slate-800">
-              <h3 className="text-white font-bold mb-2">AI & Architecture</h3>
+              <h3 className="text-white font-bold mb-2 font-heading">AI & Architecture</h3>
               <p className="text-slate-400 text-sm">Local LLMs, Prompt Engineering, Python, Apple Silicon (M3 Max) Optimization.</p>
             </div>
           </div>
