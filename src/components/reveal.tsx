@@ -3,7 +3,7 @@ import React, { useEffect, useRef } from "react";
 import { motion, useInView, useAnimation } from "framer-motion";
 
 interface Props {
-  children: JSX.Element;
+  children: React.ReactNode;
   width?: "fit-content" | "100%";
 }
 
@@ -30,7 +30,7 @@ export const Reveal = ({ children, width = "fit-content" }: Props) => {
         animate={mainControls}
         transition={{ 
           duration: 0.8, 
-          ease: [0.16, 1, 0.3, 1], // Custom premium ease-out
+          ease: [0.16, 1, 0.3, 1],
           delay: 0.2 
         }}
       >
