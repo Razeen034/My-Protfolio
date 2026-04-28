@@ -1,42 +1,71 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-  --background-obsidian: #020617;
-  --accent-cyan: #00f2ff;
-  --accent-purple: #bf00ff;
-  --glass-bg: rgba(17, 24, 39, 0.5);
-  --glass-blur: blur(20px);
-  --glass-border-color: rgba(255, 255, 255, 0.1);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: var(--background-obsidian);
-    --foreground: #ededed;
-  }
+  --background: #fdfdfd;
+  --cream: #fffefc;
+  --ice-blue: #f4faff;
+  --foreground: #1d1d1f;
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.9);
+  --accent-blue: #0066cc;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
+  overflow-x: hidden;
+  font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
-main {
-  padding-top: 4rem;
-  padding-bottom: 6rem;
+/* Sophisticated Texture & Mesh */
+.mesh-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background-color: #fdfdfd;
+  background-image: 
+    radial-gradient(at 0% 0%, hsla(200, 100%, 96%, 1) 0, transparent 50%), 
+    radial-gradient(at 100% 0%, hsla(160, 100%, 97%, 1) 0, transparent 50%),
+    radial-gradient(at 50% 100%, hsla(280, 100%, 98%, 1) 0, transparent 50%),
+    radial-gradient(at 0% 100%, hsla(210, 100%, 97%, 1) 0, transparent 50%);
+  opacity: 0.8;
 }
 
-@keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
+.noise-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  opacity: 0.015;
+  pointer-events: none;
+  background-image: url("https://www.transparenttextures.com/patterns/stardust.png");
 }
 
-.animate-blink {
-  animation: blink 1s step-end infinite;
+/* Premium Bento Styling */
+.bento-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  border-radius: 32px;
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.shadow-inner-custom {
-  box-shadow: inset 0 2px 4px 0 rgba(0,0,0,0.5);
+.shadow-floating {
+  box-shadow: 
+    0 4px 6px -1px rgba(0, 0, 0, 0.01), 
+    0 10px 15px -3px rgba(0, 0, 0, 0.02),
+    0 20px 40px -10px rgba(0, 0, 0, 0.03),
+    0 40px 80px -20px rgba(0, 0, 0, 0.04);
+}
+
+.shadow-premium {
+  box-shadow: 
+    0 2px 4px rgba(0,0,0,0.01),
+    0 10px 20px rgba(0,0,0,0.02);
+}
+
+/* Blueprint Dot Pattern */
+.dot-pattern {
+  background-image: radial-gradient(#e2e8f0 0.5px, transparent 0.5px);
+  background-size: 24px 24px;
 }

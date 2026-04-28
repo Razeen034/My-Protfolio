@@ -1,15 +1,41 @@
 "use client";
-import { motion } from "framer-motion";
-import React from "react";
+import React, { useEffect, useRef } from "react";
+import { motion, useInView, useAnimation } from "framer-motion";
 
-export const Reveal = ({ children }: { children: React.ReactNode }) => {
+interface Props {
+  children: JSX.Element;
+  width?: "fit-content" | "100%";
+}
+
+export const Reveal = ({ children, width = "fit-content" }: Props) => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
+
+  const mainControls = useAnimation();
+
+  useEffect(() => {
+    if (isInView) {
+      mainControls.start("visible");
+    }
+  }, [isInView, mainControls]);
+
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }} // Use 'animate' instead of just 'whileInView' for hero elements
-      transition={{ duration: 0.5, delay: 0.2 }}
-    >
-      {children}
-    </motion.div>
+    <div ref={ref} style={{ position: "relative", width, overflow: "visible" }}>
+      <motion.div
+        variants={{
+          hidden: { opacity: 0, y: 30, scale: 0.98 },
+          visible: { opacity: 1, y: 0, scale: 1 },
+        }}
+        initial="hidden"
+        animate={mainControls}
+        transition={{ 
+          duration: 0.8, 
+          ease: [0.16, 1, 0.3, 1], // Custom premium ease-out
+          delay: 0.2 
+        }}
+      >
+        {children}
+      </motion.div>
+    </div>
   );
 };
