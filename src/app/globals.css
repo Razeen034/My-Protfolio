@@ -1,17 +1,27 @@
 @import "tailwindcss";
 
 :root {
-  --background: #fdfdfd;
+  --background: #020617;
   --cream: #fffefc;
   --ice-blue: #f4faff;
   --foreground: #1d1d1f;
-  --glass-bg: rgba(255, 255, 255, 0.7);
-  --glass-border: rgba(255, 255, 255, 0.9);
-  --accent-blue: #0066cc;
+  --glass-bg: rgba(2, 6, 23, 0.58);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --accent-blue: #00d2ff;
+  --accent-teal: #00b09b;
+  --accent-orange: #f37335;
+  --accent-white: #ffffff;
 }
 
 body {
-  background: var(--background);
+  background:
+    radial-gradient(ellipse at 16% 12%, rgba(253, 200, 48, 0.26), transparent 34%),
+    radial-gradient(ellipse at 38% 18%, rgba(243, 115, 53, 0.20), transparent 32%),
+    radial-gradient(ellipse at 70% 16%, rgba(0, 210, 255, 0.22), transparent 32%),
+    radial-gradient(ellipse at 88% 32%, rgba(58, 123, 213, 0.24), transparent 34%),
+    radial-gradient(ellipse at 36% 82%, rgba(0, 176, 155, 0.22), transparent 34%),
+    radial-gradient(ellipse at 76% 82%, rgba(150, 201, 61, 0.18), transparent 32%),
+    linear-gradient(135deg, #030712 0%, #061526 42%, #061a16 72%, #0b0f18 100%);
   color: var(--foreground);
   overflow-x: hidden;
   font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -22,50 +32,49 @@ body {
   position: fixed;
   inset: 0;
   z-index: -1;
-  background-color: #fdfdfd;
+  background-color: #020617;
   background-image: 
-    radial-gradient(at 0% 0%, hsla(200, 100%, 96%, 1) 0, transparent 50%), 
-    radial-gradient(at 100% 0%, hsla(160, 100%, 97%, 1) 0, transparent 50%),
-    radial-gradient(at 50% 100%, hsla(280, 100%, 98%, 1) 0, transparent 50%),
-    radial-gradient(at 0% 100%, hsla(210, 100%, 97%, 1) 0, transparent 50%);
-  opacity: 0.8;
+    radial-gradient(ellipse at 12% 12%, rgba(253, 200, 48, 0.34) 0, transparent 34%),
+    radial-gradient(ellipse at 34% 16%, rgba(243, 115, 53, 0.24) 0, transparent 34%),
+    radial-gradient(ellipse at 62% 10%, rgba(0, 210, 255, 0.30) 0, transparent 34%),
+    radial-gradient(ellipse at 88% 20%, rgba(58, 123, 213, 0.30) 0, transparent 36%),
+    radial-gradient(ellipse at 22% 88%, rgba(0, 176, 155, 0.26) 0, transparent 40%),
+    radial-gradient(ellipse at 78% 84%, rgba(150, 201, 61, 0.22) 0, transparent 38%),
+    linear-gradient(135deg, rgba(3, 7, 18, 0.98), rgba(6, 21, 38, 0.9) 42%, rgba(6, 26, 22, 0.92));
+  opacity: 1;
 }
 
 .noise-overlay {
   position: fixed;
   inset: 0;
   z-index: -1;
-  opacity: 0.015;
+  opacity: 0.08;
   pointer-events: none;
-  background-image: url("https://www.transparenttextures.com/patterns/stardust.png");
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 44px 44px;
 }
 
 /* Premium Bento Styling */
 .bento-card {
-  background: var(--glass-bg);
+  background: transparent;
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid var(--glass-border);
-  border-radius: 32px;
+  border: 0;
+  border-radius: 0;
   transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: none;
 }
 
 .shadow-floating {
-  box-shadow: 
-    0 4px 6px -1px rgba(0, 0, 0, 0.01), 
-    0 10px 15px -3px rgba(0, 0, 0, 0.02),
-    0 20px 40px -10px rgba(0, 0, 0, 0.03),
-    0 40px 80px -20px rgba(0, 0, 0, 0.04);
+  box-shadow: none;
 }
 
 .shadow-premium {
   box-shadow: 
-    0 2px 4px rgba(0,0,0,0.01),
-    0 10px 20px rgba(0,0,0,0.02);
+    0 2px 4px rgba(2, 6, 23, 0.22),
+    0 16px 34px rgba(0, 210, 255, 0.16),
+    0 24px 54px rgba(253, 200, 48, 0.12);
 }
 
-/* Blueprint Dot Pattern */
-.dot-pattern {
-  background-image: radial-gradient(#e2e8f0 0.5px, transparent 0.5px);
-  background-size: 24px 24px;
-}

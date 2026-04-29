@@ -20,7 +20,7 @@ export function MouseGlow() {
     <div
       className="pointer-events-none fixed inset-0 z-30 transition duration-300"
       style={{
-        background: `radial-gradient(800px at ${mousePosition.x}px ${mousePosition.y}px, rgba(0, 102, 204, 0.04), transparent 80%)`,
+        background: `radial-gradient(520px at ${mousePosition.x}px ${mousePosition.y}px, rgba(0, 210, 255, 0.14), transparent 60%), radial-gradient(760px at ${mousePosition.x}px ${mousePosition.y}px, rgba(253, 200, 48, 0.09), transparent 76%)`,
       }}
     />
   );

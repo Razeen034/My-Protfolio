@@ -4,25 +4,25 @@ import { Home } from "lucide-react";
 
 export default function NotFound() {
   return (
-    <main className="min-h-screen bg-[#fdfdfd] text-slate-900 flex items-center justify-center p-6 relative overflow-hidden">
-      {/* Mesh Background */}
-      <div className="mesh-gradient" />
-      
+    <main className="min-h-screen text-white flex items-center justify-center p-6 relative overflow-hidden">
+      <div className="mesh-bg" />
+      <div className="noise-overlay" />
+
       <Reveal>
-        <div className="max-w-xl mx-auto bento-card p-12 shadow-floating text-center space-y-6">
-          <div className="w-20 h-20 bg-blue-50 text-blue-600 rounded-3xl flex items-center justify-center mx-auto border border-blue-100 mb-4">
+        <div className="max-w-xl mx-auto bento-card p-10 md:p-12 text-center space-y-6">
+          <div className="w-20 h-20 bg-white/10 text-[#00d2ff] rounded-2xl flex items-center justify-center mx-auto border border-white/10 mb-4 shadow-premium">
             <span className="text-3xl font-black italic">404</span>
           </div>
-          
+
           <h1 className="text-4xl font-black tracking-tight">Page Not Found</h1>
-          <p className="text-slate-500 font-regular text-lg">
-            The architectural blueprint you're looking for doesn't exist in this directory.
+          <p className="text-cyan-50/78 font-regular text-lg">
+            The architectural blueprint you&apos;re looking for doesn&apos;t exist in this directory.
           </p>
 
           <div className="pt-6">
             <Link 
               href="/" 
-              className="inline-flex items-center gap-2 px-8 py-3 bg-slate-900 text-white rounded-2xl font-bold hover:bg-blue-600 shadow-lg hover:shadow-xl hover:shadow-blue-500/20 transition-all"
+              className="inline-flex items-center gap-2 px-8 py-3 bg-white text-slate-950 rounded-2xl font-bold hover:bg-[#00d2ff] hover:text-white shadow-lg transition-all"
             >
               <Home size={18} />
               Return Home

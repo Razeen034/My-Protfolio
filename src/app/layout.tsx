@@ -12,23 +12,24 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://rajinpanthee.com"),
   title: "Rajin Panthee | Senior Full Stack Java Developer",
   description: "Senior Full Stack Java Developer with 6+ years of experience in Microservices, Spring Boot, and AWS Cloud Architecture.",
   keywords: ["Java Developer", "Full Stack Engineer", "Microservices", "Spring Boot", "AWS", "Angular", "Software Engineer"],
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     title: "Rajin Panthee | Senior Full Stack Java Developer",
     description: "Expertise in designing, developing, and deploying robust Java/J2EE applications across enterprise environments.",
     url: "https://rajinpanthee.com",
     siteName: "Rajin Panthee's Portfolio",
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-      },
-    ],
     locale: "en_US",
     type: "website",
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 
@@ -72,14 +73,12 @@ export default function RootLayout({
       </head>
       <body className="antialiased font-sans text-slate-900">
         <MouseGlow />
-        {/* Sidebar for Desktop, Navbar for Mobile */}
         <Sidebar />
         <div className="md:hidden">
           <Navbar />
         </div>
-        
-        {/* Main Content Area shifted for Sidebar */}
-        <div className="md:pl-20 lg:pl-64 transition-all duration-500">
+
+        <div className="md:pl-20 lg:pl-72 transition-all duration-500">
           {children}
         </div>
       </body>
