@@ -45,27 +45,27 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="fixed top-0 z-50 w-full bg-black/38 backdrop-blur-md border-b border-white/10 shadow-[0_12px_34px_rgba(0,0,0,0.22)]">
-      <div className="max-w-6xl mx-auto px-4 h-14 flex items-center justify-center">
-        <div className="flex gap-2 sm:gap-8">
+    <nav className="fixed top-0 z-50 w-full bg-black/42 backdrop-blur-md border-b border-white/10 shadow-[0_12px_34px_rgba(0,0,0,0.22)]">
+      <div className="mx-auto h-14 max-w-6xl px-2 sm:px-4 flex items-center justify-center">
+        <div className="grid w-full grid-cols-4 gap-1 sm:flex sm:w-auto sm:gap-8">
           {navItems.map((item) => (
             <button
               key={item.id}
               type="button"
               onClick={() => scrollToSection(item.id)}
               aria-current={activeSection === item.id ? "page" : undefined}
-              className={`flex flex-col items-center justify-center min-w-[80px] transition-colors group relative py-1 ${
+              className={`flex min-w-0 flex-col items-center justify-center transition-colors group relative py-1 ${
                 activeSection === item.id ? 'text-white' : 'text-cyan-100/65 hover:text-white'
               }`}
             >
               <item.icon size={18} className={activeSection === item.id ? 'text-white' : 'group-hover:text-white'} />
-              <span className={`text-[10px] font-bold mt-1 transition-all duration-200 ${
-                activeSection === item.id ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
+              <span className={`mt-1 max-w-full truncate text-[9px] sm:text-[10px] font-bold transition-all duration-200 ${
+                activeSection === item.id ? 'opacity-100' : 'opacity-70 sm:opacity-0 sm:group-hover:opacity-100'
               }`}>
                 {item.label}
               </span>
               {activeSection === item.id && (
-                <div className="absolute bottom-[-1px] h-0.5 w-12 bg-gradient-to-r from-[#FDC830] via-[#00d2ff] to-[#96c93d]" />
+                <div className="absolute bottom-[-1px] h-0.5 w-8 sm:w-12 bg-gradient-to-r from-[#FDC830] via-[#00d2ff] to-[#96c93d]" />
               )}
             </button>
           ))}

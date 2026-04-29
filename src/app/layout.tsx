@@ -78,7 +78,7 @@ export default function RootLayout({
           <Navbar />
         </div>
 
-        <div className="md:pl-20 lg:pl-72 transition-all duration-500">
+        <div className="pt-14 md:pt-0 md:pl-20 lg:pl-72 transition-all duration-500">
           {children}
         </div>
       </body>
