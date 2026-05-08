@@ -1,5 +1,6 @@
 import {
   HeroSection,
+  StatsStrip,
   AboutSection,
   ExperienceSection,
   SkillsSection,
@@ -11,6 +12,7 @@ export default function Home() {
   return (
     <>
       <HeroSection />
+      <StatsStrip />
       <AboutSection />
       <ExperienceSection />
       <SkillsSection />

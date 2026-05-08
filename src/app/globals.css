@@ -273,18 +273,47 @@ body {
 
 /* ---------- Section rhythm ---------- */
 .section {
-  padding: 5rem 1.25rem;
+  padding: 4rem 1.25rem;
 }
 @media (min-width: 640px) {
-  .section { padding: 7rem 1.5rem; }
+  .section { padding: 5rem 1.5rem; }
 }
 @media (min-width: 768px) {
-  .section { padding: 9rem 2rem; }
+  .section { padding: 6.5rem 2rem; }
 }
 
 .section-inner {
-  max-width: 64rem;
+  max-width: 68rem;
   margin: 0 auto;
+}
+
+/* Compact strip for the stats band */
+.section-strip {
+  padding: 2.5rem 1.25rem;
+}
+@media (min-width: 768px) {
+  .section-strip { padding: 3rem 2rem; }
+}
+
+/* Colored left borders (used by experience milestone cards) */
+.bl-indigo  { border-left-color: rgba(129, 140, 248, 0.30); }
+.bl-cyan    { border-left-color: rgba(34, 211, 238, 0.30); }
+.bl-fuchsia { border-left-color: rgba(244, 114, 182, 0.30); }
+.bl-amber   { border-left-color: rgba(251, 191, 36, 0.30); }
+.bl-lime    { border-left-color: rgba(190, 242, 100, 0.30); }
+.bl-indigo:hover  { border-left-color: rgba(129, 140, 248, 0.95); }
+.bl-cyan:hover    { border-left-color: rgba(34, 211, 238, 0.95); }
+.bl-fuchsia:hover { border-left-color: rgba(244, 114, 182, 0.95); }
+.bl-amber:hover   { border-left-color: rgba(251, 191, 36, 0.95); }
+.bl-lime:hover    { border-left-color: rgba(190, 242, 100, 0.95); }
+
+/* Stat number block */
+.stat-num {
+  font-family: var(--font-space-grotesk), Inter, sans-serif;
+  font-weight: 700;
+  font-size: clamp(2.25rem, 4vw, 3.25rem);
+  letter-spacing: -0.03em;
+  line-height: 1;
 }
 
 .no-scrollbar { scrollbar-width: none; -ms-overflow-style: none; }
