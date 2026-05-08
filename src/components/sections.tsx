@@ -16,7 +16,10 @@ import {
   Check,
   Mail,
   MapPin,
+  Download,
 } from "lucide-react";
+
+const RESUME_PATH = "/Rajin-Panthee-Resume.pdf";
 import { Reveal } from "./reveal";
 import { Magnetic, StaggerLetters } from "./effects";
 
@@ -312,6 +315,79 @@ const stats = [
   { number: "4", label: "Enterprise clients", color: "cyan" as Color },
   { number: "90%+", label: "Test coverage", color: "fuchsia" as Color },
   { number: "40%", label: "Faster release cycles", color: "amber" as Color },
+];
+
+type Project = {
+  id: string;
+  number: string;
+  title: string;
+  period: string;
+  tagline: string;
+  context: string;
+  approach: string;
+  metrics: { value: string; label: string }[];
+  tags: string[];
+  color: Color;
+  href?: string;
+};
+
+const projects: Project[] = [
+  {
+    id: "fraud-pipeline",
+    number: "01",
+    title: "Real-time fraud signal pipeline",
+    period: "2021 — 2022",
+    tagline:
+      "Cut detection latency from sub-second to under 200ms by replacing sync REST chains with a Kafka-driven event mesh.",
+    context:
+      "A retail-banking transaction service relied on synchronous REST checks against three downstream risk services. P95 latency drifted past 800ms during peak hours, and stale fraud signals slipped past in-flight authorizations.",
+    approach:
+      "Modeled risk events as Kafka topics with Spring Cloud Stream consumers, fanned signals into MongoDB aggregation pipelines, and exposed read-side projections via Apigee with rate limiting. Backed everything with idempotent consumers, parameterized JUnit 5 tests, and Cucumber scenarios for the four highest-volume flows.",
+    metrics: [
+      { value: "<200ms", label: "Detection latency" },
+      { value: "4×", label: "Throughput" },
+      { value: "92%", label: "Test coverage" },
+    ],
+    tags: [
+      "Java 11",
+      "Spring Boot",
+      "Kafka",
+      "MongoDB",
+      "Apigee",
+      "AWS Kinesis",
+      "JUnit 5",
+    ],
+    color: "amber",
+    href: "#",
+  },
+  {
+    id: "webflux-gateway",
+    number: "02",
+    title: "OAuth2 gateway for high-throughput APIs",
+    period: "2023",
+    tagline:
+      "Rebuilt traffic-critical endpoints in Spring WebFlux behind an OAuth2 + JWT gateway and held 50k req/min on a hardened EKS deployment.",
+    context:
+      "Legacy Spring MVC endpoints were single-threaded under load and couldn't sustain promotional spikes. A security audit flagged token-handling gaps and ambiguous fallback behavior in the auth layer during partial outages.",
+    approach:
+      "Rebuilt the eight hottest endpoints with non-blocking Spring WebFlux. Wrapped them in an OAuth2 + JWT gateway with token introspection, hardened CORS, and centralized rate limiting. Provisioned the stack on AWS EKS with HPA via Terraform, then mirrored traffic through a canary route before cutover.",
+    metrics: [
+      { value: "95ms", label: "P99 latency" },
+      { value: "50k/min", label: "Sustained RPS" },
+      { value: "0", label: "Audit findings" },
+    ],
+    tags: [
+      "Spring WebFlux",
+      "OAuth2",
+      "JWT",
+      "AWS EKS",
+      "Terraform",
+      "Kafka",
+      "Dynatrace",
+    ],
+    color: "cyan",
+    href: "#",
+  },
 ];
 
 const education = [
@@ -649,6 +725,118 @@ export function ExperienceSection() {
   );
 }
 
+/* ---------------- SELECTED WORK ---------------- */
+export function WorkSection() {
+  return (
+    <section id="work" className="section">
+      <div className="section-inner">
+        <SectionHeader eyebrow="Selected Work" color="indigo" />
+
+        <Reveal width="100%" delay={0.1}>
+          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-12">
+            <h2 className="h-section max-w-2xl">
+              Two recent projects,{" "}
+              <span className="pop pop-indigo">in detail</span>.
+            </h2>
+            <p className="body max-w-md">
+              Selected case studies covering the kind of distributed-systems
+              work I gravitate toward.
+            </p>
+          </div>
+        </Reveal>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
+          {projects.map((p, i) => (
+            <Reveal key={p.id} width="100%" delay={0.15 + i * 0.1}>
+              <article
+                className="group relative h-full p-7 sm:p-8 rounded-2xl border border-white/[0.07] bg-white/[0.015] hover:bg-white/[0.03] hover:border-white/[0.14] transition-all overflow-hidden"
+              >
+                {/* Decorative gradient blob in the top-right corner */}
+                <div
+                  aria-hidden
+                  className="absolute -top-24 -right-24 h-64 w-64 rounded-full blur-[80px] opacity-30 pointer-events-none transition-opacity duration-500 group-hover:opacity-55"
+                  style={{
+                    background: `radial-gradient(circle, var(--c-${p.color}), transparent 65%)`,
+                  }}
+                />
+
+                <div className="relative">
+                  <div className="flex items-center justify-between mb-6">
+                    <span
+                      className={`font-display text-[11px] tracking-[0.22em] uppercase font-semibold ${tColor[p.color]}`}
+                    >
+                      Case Study · {p.number}
+                    </span>
+                    <span className="font-display text-[12px] t-faint">
+                      {p.period}
+                    </span>
+                  </div>
+
+                  <h3
+                    className={`font-display text-2xl sm:text-3xl font-bold tracking-tight text-white ${ghColor[p.color]} transition-colors mb-4 leading-tight`}
+                  >
+                    {p.title}
+                  </h3>
+
+                  <p className="body-lg mb-7">{p.tagline}</p>
+
+                  <div className="grid grid-cols-3 gap-4 py-5 mb-7 border-y border-white/[0.06]">
+                    {p.metrics.map((m) => (
+                      <div key={m.label}>
+                        <p
+                          className={`font-display font-bold text-2xl sm:text-[1.6rem] tracking-tight leading-none ${tColor[p.color]}`}
+                        >
+                          {m.value}
+                        </p>
+                        <p className="font-display text-[10px] uppercase tracking-wider t-faint mt-2">
+                          {m.label}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="space-y-5 mb-7">
+                    <div>
+                      <p className={`eyebrow ${ebColor[p.color]} mb-2`}>
+                        Context
+                      </p>
+                      <p className="body">{p.context}</p>
+                    </div>
+                    <div>
+                      <p className={`eyebrow ${ebColor[p.color]} mb-2`}>
+                        Approach
+                      </p>
+                      <p className="body">{p.approach}</p>
+                    </div>
+                  </div>
+
+                  <div className="flex flex-wrap gap-1.5 mb-6">
+                    {p.tags.map((t) => (
+                      <span key={t} className={`tag ${tagColor[p.color]}`}>
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+
+                  {p.href && (
+                    <a
+                      href={p.href}
+                      className="inline-flex items-center gap-1.5 font-display text-[13px] font-medium text-white/85 hover:text-white transition-colors"
+                    >
+                      Read case study
+                      <ArrowUpRight size={14} strokeWidth={2} />
+                    </a>
+                  )}
+                </div>
+              </article>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 /* ---------------- SKILLS ---------------- */
 export function SkillsSection() {
   return (
@@ -860,6 +1048,12 @@ export function ContactSection() {
                   </>
                 )}
               </button>
+            </Magnetic>
+            <Magnetic strength={0.2}>
+              <a href={RESUME_PATH} download className="btn-ghost">
+                <Download size={14} strokeWidth={2} />
+                Download resume
+              </a>
             </Magnetic>
           </div>
         </Reveal>

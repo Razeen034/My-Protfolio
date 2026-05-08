@@ -3,6 +3,7 @@ import {
   StatsStrip,
   AboutSection,
   ExperienceSection,
+  WorkSection,
   SkillsSection,
   ContactSection,
   FooterRule,
@@ -15,6 +16,7 @@ export default function Home() {
       <StatsStrip />
       <AboutSection />
       <ExperienceSection />
+      <WorkSection />
       <SkillsSection />
       <ContactSection />
       <FooterRule />
