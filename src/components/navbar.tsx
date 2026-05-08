@@ -1,71 +1,73 @@
 "use client";
-import { useState, useEffect } from 'react';
-import { Home, Briefcase, Sparkles, FileText } from 'lucide-react';
+import { useEffect, useState } from "react";
+
+const navItems = [
+  { id: "home", label: "Home" },
+  { id: "about", label: "About" },
+  { id: "experience", label: "Experience" },
+  { id: "skills", label: "Skills" },
+  { id: "contact", label: "Contact" },
+];
 
 export default function Navbar() {
-  const [activeSection, setActiveSection] = useState('home');
+  const [scrolled, setScrolled] = useState(false);
+  const [active, setActive] = useState("home");
 
   useEffect(() => {
-    const handleScroll = () => {
-      const sections = ['home', 'projects', 'ai', 'blog'];
-      const scrollPosition = window.scrollY + 100;
-
-      for (const section of sections) {
-        const element = document.getElementById(section);
-        if (element) {
-          const offsetTop = element.offsetTop;
-          const height = element.offsetHeight;
-
-          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + height) {
-            setActiveSection(section);
-          }
+    const onScroll = () => {
+      setScrolled(window.scrollY > 24);
+      const y = window.scrollY + 120;
+      for (const { id } of navItems) {
+        const el = document.getElementById(id);
+        if (!el) continue;
+        if (y >= el.offsetTop && y < el.offsetTop + el.offsetHeight) {
+          setActive(id);
         }
       }
     };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      window.scrollTo({
-        top: element.offsetTop - 80,
-        behavior: 'smooth',
-      });
-    }
+  const go = (id: string) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    window.scrollTo({ top: el.offsetTop - 64, behavior: "smooth" });
   };
 
-  const navItems = [
-    { id: 'home', label: 'Home', icon: Home },
-    { id: 'projects', label: 'Projects', icon: Briefcase },
-    { id: 'ai', label: 'How I AI', icon: Sparkles },
-    { id: 'blog', label: 'Blog', icon: FileText },
-  ];
-
   return (
-    <nav className="fixed top-0 z-50 w-full bg-black/42 backdrop-blur-md border-b border-white/10 shadow-[0_12px_34px_rgba(0,0,0,0.22)]">
-      <div className="mx-auto h-14 max-w-6xl px-2 sm:px-4 flex items-center justify-center">
-        <div className="grid w-full grid-cols-4 gap-1 sm:flex sm:w-auto sm:gap-8">
+    <nav
+      className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
+        scrolled
+          ? "backdrop-blur-md bg-[rgba(10,10,18,0.7)] border-b border-white/[0.06]"
+          : "bg-transparent border-b border-transparent"
+      }`}
+    >
+      <div className="max-w-6xl mx-auto h-14 px-5 sm:px-6 flex items-center justify-between gap-4">
+        <button
+          type="button"
+          onClick={() => go("home")}
+          className="hidden sm:block text-[13px] font-medium tracking-tight text-white/90 hover:text-white transition-colors"
+        >
+          Rajin Panthee
+        </button>
+
+        <div className="flex items-center gap-0.5 sm:gap-1 mx-auto sm:mx-0">
           {navItems.map((item) => (
             <button
               key={item.id}
               type="button"
-              onClick={() => scrollToSection(item.id)}
-              aria-current={activeSection === item.id ? "page" : undefined}
-              className={`flex min-w-0 flex-col items-center justify-center transition-colors group relative py-1 ${
-                activeSection === item.id ? 'text-white' : 'text-cyan-100/65 hover:text-white'
+              onClick={() => go(item.id)}
+              className={`relative px-2.5 sm:px-3 py-1.5 text-[12px] sm:text-[13px] tracking-tight transition-colors ${
+                active === item.id
+                  ? "text-white"
+                  : "text-white/55 hover:text-white/90"
               }`}
             >
-              <item.icon size={18} className={activeSection === item.id ? 'text-white' : 'group-hover:text-white'} />
-              <span className={`mt-1 max-w-full truncate text-[9px] sm:text-[10px] font-bold transition-all duration-200 ${
-                activeSection === item.id ? 'opacity-100' : 'opacity-70 sm:opacity-0 sm:group-hover:opacity-100'
-              }`}>
-                {item.label}
-              </span>
-              {activeSection === item.id && (
-                <div className="absolute bottom-[-1px] h-0.5 w-8 sm:w-12 bg-gradient-to-r from-[#FDC830] via-[#00d2ff] to-[#96c93d]" />
+              {item.label}
+              {active === item.id && (
+                <span className="absolute left-2.5 right-2.5 sm:left-3 sm:right-3 -bottom-px h-px bg-gradient-to-r from-transparent via-white/60 to-transparent" />
               )}
             </button>
           ))}
