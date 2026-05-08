@@ -1,12 +1,30 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Space_Grotesk, Instrument_Serif } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/navbar";
+import {
+  ScrollProgress,
+  MouseSpotlight,
+  FloatingOrbs,
+} from "@/components/effects";
 
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
+});
+
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-space-grotesk",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+});
+
+const instrumentSerif = Instrument_Serif({
+  variable: "--font-instrument-serif",
+  subsets: ["latin"],
+  weight: ["400"],
+  style: ["normal", "italic"],
 });
 
 export const metadata: Metadata = {
@@ -47,7 +65,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} antialiased`}>
+    <html
+      lang="en"
+      className={`${inter.variable} ${spaceGrotesk.variable} ${instrumentSerif.variable} antialiased`}
+    >
       <head>
         <script
           type="application/ld+json"
@@ -78,7 +99,10 @@ export default function RootLayout({
       </head>
       <body className="antialiased">
         <div className="ambient-bg" aria-hidden />
+        <FloatingOrbs />
         <div className="grain" aria-hidden />
+        <MouseSpotlight />
+        <ScrollProgress />
         <Navbar />
         <main>{children}</main>
       </body>

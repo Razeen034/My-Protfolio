@@ -44,30 +44,31 @@ export default function Navbar() {
           : "bg-transparent border-b border-transparent"
       }`}
     >
-      <div className="max-w-6xl mx-auto h-14 px-5 sm:px-6 flex items-center justify-between gap-4">
+      <div className="max-w-6xl mx-auto h-14 px-4 sm:px-6 flex items-center justify-between gap-3">
         <button
           type="button"
           onClick={() => go("home")}
-          className="hidden sm:block text-[13px] font-medium tracking-tight text-white/90 hover:text-white transition-colors"
+          className="hidden sm:flex items-center gap-2 font-display text-[13px] font-bold tracking-tight text-white hover:text-white transition-colors"
         >
+          <span className="h-1.5 w-1.5 rounded-full bg-gradient-to-br from-indigo-400 to-fuchsia-400" />
           Rajin Panthee
         </button>
 
-        <div className="flex items-center gap-0.5 sm:gap-1 mx-auto sm:mx-0">
+        <div className="flex items-center gap-0 sm:gap-1 mx-auto sm:mx-0 overflow-x-auto no-scrollbar">
           {navItems.map((item) => (
             <button
               key={item.id}
               type="button"
               onClick={() => go(item.id)}
-              className={`relative px-2.5 sm:px-3 py-1.5 text-[12px] sm:text-[13px] tracking-tight transition-colors ${
+              className={`relative px-2 sm:px-3 py-1.5 font-display text-[12px] sm:text-[13px] font-medium tracking-tight whitespace-nowrap transition-colors ${
                 active === item.id
                   ? "text-white"
-                  : "text-white/55 hover:text-white/90"
+                  : "text-white/60 hover:text-white"
               }`}
             >
               {item.label}
               {active === item.id && (
-                <span className="absolute left-2.5 right-2.5 sm:left-3 sm:right-3 -bottom-px h-px bg-gradient-to-r from-transparent via-white/60 to-transparent" />
+                <span className="absolute left-2 right-2 sm:left-3 sm:right-3 -bottom-px h-[2px] rounded-full bg-gradient-to-r from-indigo-400 via-cyan-300 to-fuchsia-400" />
               )}
             </button>
           ))}
